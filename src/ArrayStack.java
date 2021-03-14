@@ -1,23 +1,23 @@
-public class ArrayStack extends GenericMethods<Integer> {
+import java.util.Stack;
+
+public class ArrayStack extends GenericMethods<String> {
 
     int top, length;
-    Integer[] integers;
-
-    GenericMethods<String> array;
+    String[] strings;
 
     ArrayStack(int length) {
-        super(Integer[].class, length);
-        GenericMethods<Integer> array = new GenericMethods<Integer>(Integer[].class, length);
+        super(String[].class, length);
+        GenericMethods<String> array = new GenericMethods<String>(String[].class, length);
         this.top = -1;
         this.length = length;
-        integers = array.ofType;
+        strings = array.ofType;
     }
 
-    public void add(int integer) {
+    public void add(String string) {
         if (!isFull(getTop(), getLength())) {
             top++;
-            integers[top] = integer;
-            System.out.println("String '" + integer + "' was added!");
+            strings[top] = string;
+            System.out.println("String '" + string + "' was added!");
         } else {
             System.exit(0);
         }
@@ -28,40 +28,31 @@ public class ArrayStack extends GenericMethods<Integer> {
             System.exit(0);
             return false;
         } else {
-            int aux = integers[top];
-            integers[top] = integers[0];
+            String aux = strings[top];
+            strings[top] = strings[0];
             top--;
-            System.out.println("String " + integers[0] + " was removed!");
+            System.out.println("String " + strings[0] + " was removed!");
             return true;
         }
     }
 
     public void print() {
-        for (int i = 0; i < getIntegers().length; i++) {
-            if (integers[i] != null) {
-                System.out.println(integers[i]);
+        for (int i = 0; i < getStrings().length; i++) {
+            if (strings[i] != null) {
+                System.out.println(strings[i]);
             }
         }
     }
 
     public void invertPosition() {
-        for (int i = 0; i < integers.length / 2; i++) {
-            Integer temp = integers[i];
-            integers[i] = integers[integers.length - 1 - i];
-            integers[integers.length - 1 - i] = temp;
+        for (int i = 0; i < strings.length / 2; i++) {
+            String temp = strings[i];
+            strings[i] = strings[strings.length - 1 - i];
+            strings[strings.length - 1 - i] = temp;
             if(temp != null) {
                 System.out.println(temp);
             }
         }
-    }
-
-
-    public Integer[] getIntegers() {
-        return integers;
-    }
-
-    public void setIntegers(Integer[] integers) {
-        this.integers = integers;
     }
 
     public int getTop() {
@@ -73,12 +64,19 @@ public class ArrayStack extends GenericMethods<Integer> {
     }
 
     public int getLength() {
-        setLength(length + 1);
         return length;
     }
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    public String[] getStrings() {
+        return strings;
+    }
+
+    public void setStrings(String[] strings) {
+        this.strings = strings;
     }
 }
 
